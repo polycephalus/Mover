@@ -1,9 +1,11 @@
 let ball;
+let c;
 
 function setup() {
-  createCanvas(460, 460);
-  background(255, 200, 200);
-  // colorMode(HSB);
+  // createCanvas(460, 460);
+  createCanvas(800, 600);
+  background(0);
+  colorMode(HSB, 100, 255, 255);
   //
   strokeWeight(2);
   stroke(255);
@@ -12,7 +14,9 @@ function setup() {
 }
 
 function draw() {
-  // ellipse(mouseX, mouseY, 50, 50);
+  c = frameCount%100;
+  fill(c, 255, 255);
+  ball.bounce();
   ball.move();
   ball.display();
 }
@@ -31,6 +35,15 @@ class Ball {
     this.pos.add(this.vel);
   }
 
+  bounce() {
+    if (this.pos.x>width || this.pos.x<0) {
+      this.vel.x *= -1;
+    }
+    if (this.pos.y>height || this.pos.y<0) {
+      this.vel.y *= -1;
+    }
+  }
+
   // p5.Vector bounce() {
   //   if (this.pos.x>width || this.pos.x<0) {
   //     this.vel.x *= -1;
@@ -42,7 +55,7 @@ class Ball {
   // }
 
   display() {
-    fill(0);
+    // fill(0);
     ellipse(this.pos.x, this.pos.y, 20, 20);
   }
 }
