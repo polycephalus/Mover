@@ -6,7 +6,7 @@ function setup() {
   createCanvas(800, 600);
   background(0);
   colorMode(HSB, 100, 255, 255);
-  
+
   strokeWeight(2);
   stroke(255);
 
@@ -35,6 +35,7 @@ class Ball {
     this.pos.add(this.vel);
   }
 
+  //fix bounce
   bounce() {
     if (this.pos.x>width || this.pos.x<0) {
       this.vel.x *= -1;
@@ -56,6 +57,6 @@ class Ball {
 
   display() {
     // fill(0);
-    ellipse(this.pos.x, this.pos.y, 20, 20);
+    ellipse(this.pos.x, this.pos.y, 50, 50); //20
   }
 }
