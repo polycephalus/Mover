@@ -6,7 +6,10 @@ class Ball {
     this.acc = createVector(0, 0);
   }
 
-  get position(){
+  // get position(){
+  //   return this.pos;
+  // }
+  get position() {
     return this.pos;
   }
 
@@ -28,6 +31,6 @@ class Ball {
 
   display() {
     // fill(0);
-    ellipse(this.pos.x, this.pos.y, 50, 50); //20
+    ellipse(this.pos.x, this.pos.y, 20, 20); //20
   }
 }
