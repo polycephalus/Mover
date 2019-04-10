@@ -1,5 +1,4 @@
 //change to constructor function?
-//no (real) classes in js
 class Ball {
   constructor() {
     this.pos = createVector(width/2, height/2);
@@ -20,7 +19,7 @@ class Ball {
 
   bounce() {
     if (this.pos.x>width || this.pos.x<0) {
-      this.vel.x *= -10;
+      this.vel.x *= -10; //extra speed to get away from the edges
     }
     if (this.pos.y>height || this.pos.y<0) {
       this.vel.y *= -10;

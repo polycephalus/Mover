@@ -9,8 +9,8 @@ function setup() {
   colorMode(HSB, 100, 100, 100);
 
   strokeWeight(2);
-  // noStroke();
   stroke(255);
+  // noStroke();
 
   ball = new Ball();
 }
