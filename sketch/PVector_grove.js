@@ -1,66 +1,51 @@
-// import Circle from './Circle.js';
-
-//sketch a constructor func that takes p?
 //sketch namespace/instance mode
+//p5 sketch object
 var sketch = function (p){
-  // let ball;
-  p.grove = [];
-  var x = 10;
-  let c;
+  let ball;
+  let grove = [];
 
-  let circle;
-  let square;
+  // let hue;
 
   p.setup = function() {
     p.createCanvas(460, 460);
     p.background(0, 255, 255);
-    // p.colorMode(p.HSB);
-    p.rectMode(p.CENTER);
+    p.colorMode(p.HSB);
 
     p.strokeWeight(2);
     p.stroke(255);
 
-    p.print(x);
-
-    square = new Square(p.width/4, p.height/2, p);
-    circle = new Circle(p.width/2, p.height/2, p);
-
-    circle.beep(square);
-    console.log(square.spos.y);
-
-    // ball = new Ball();
-    // plantSaplings();
+    ball = new Ball(p);
+    plantSaplings();
   }
 
   p.draw = function() {
-    // p.background(0, 255, 255);//25
+    p.background(25);
 
-    p.c = p.frameCount%100; //modulo hue pulse
-    p.fill(c, 100, 100);
+    // hue = p.frameCount%100; //modulo hue pulse
+    // p.fill(hue, 100, 100);
 
-    circle.display(square);
-    square.display();
+    ball.bounce(p);
+    ball.move(p);
+    // ball.display(p);
 
-    // ball.bounce();
-    // ball.move();
-    // ball.display();
-
-    // grove.forEach(function(sapling) {
-    //   sapling.display(); //take ball
-    // });
+    grove.forEach(function(sapling) {
+      sapling.display(ball, p);
+    });
   }
 
-  // function plantSaplings() {
-  //   let count = 0;
-  //   const margin = 2;
-  //   const distance = 20;
-  //   for (i=0; i<20; i++) {
-  //     for (j=0; j<20; j++) {
-  //       grove[count] = new Sapling((i+margin)*distance, (j+margin)*distance);
-  //       count++;
-  //     }
-  //   }
-  // }
+  function plantSaplings() {
+    let count = 0;
+    const margin = 2;
+    const distance = 20;
+
+    for (i=0; i<20; i++) {
+      for (j=0; j<20; j++) {
+        grove[count] = new Sapling((i+margin)*distance, (j+margin)*distance, p);
+        count++;
+      }
+    }
+  }
+
 }; //sketch namespace
 
 let myp5 = new p5(sketch);

@@ -1,33 +1,32 @@
 class Ball {
-  constructor() {
-    this.pos = createVector(width/2, height/2);
-    this.vel = createVector(0, 0);
-    this.acc = createVector(0, 0);
+  constructor(p) {
+    this.pos = p.createVector(p.width/2, p.height/2); 
+    this.vel = p.createVector(0, 0);
+    this.acc = p.createVector(0, 0);
   }
 
-  //not needed with global scope
-  get position() {
-    return this.pos;
-  }
+  // get position() {
+  //   return this.pos;
+  // }
 
-  move() {
+  move(p) {
     this.acc = p5.Vector.random2D();
     this.vel.add(this.acc);
     this.vel.limit(6);
     this.pos.add(this.vel);
   }
 
-  bounce() {
-    if (this.pos.x>width || this.pos.x<0) {
+  bounce(p) {
+    if (this.pos.x>p.width || this.pos.x<0) {
       this.vel.x *= -10; //extra speed to get away from the edges
     }
-    if (this.pos.y>height || this.pos.y<0) {
+    if (this.pos.y>p.height || this.pos.y<0) {
       this.vel.y *= -10;
     }
   }
 
-  display() {
-    fill(120, 255, 255);
-    ellipse(this.pos.x, this.pos.y, 20, 20); //20
+  display(p) {
+    p.fill(0, 255, 255);
+    p.ellipse(this.pos.x, this.pos.y, 20, 20);
   }
 }
