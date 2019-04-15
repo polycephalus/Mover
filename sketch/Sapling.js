@@ -1,19 +1,17 @@
 class Sapling {
   constructor(posx, posy) {
-    // this.posx = posx;
-    // this.posy = posy;
     this.svec = createVector(posx, posy);
-    // this.point;
+    this.point;
   }
 
+  //take ball
   display() {
-    //upsetting
-    // this.point = createVector(ball.pos.x, ball.pos.y);
+    this.point = createVector(ball.pos.x, ball.pos.y);
+    // this.point = createVector(temp_ball.pos.x, temp_ball.pos.y);
     fill(0, 100, 100);
-    // ellipse(this.posx, this.posy, 10, 10); //20
 
     push();
-    translate(this.posx, this.posy);
+    translate(this.svec.x, this.svec.y);
     this.point.sub(this.svec);
     this.point.normalize();
     this.point.mult(12);

@@ -1,4 +1,3 @@
-//change to constructor function?
 class Ball {
   constructor() {
     this.pos = createVector(width/2, height/2);
@@ -6,6 +5,7 @@ class Ball {
     this.acc = createVector(0, 0);
   }
 
+  //not needed with global scope
   get position() {
     return this.pos;
   }
@@ -27,7 +27,7 @@ class Ball {
   }
 
   display() {
-    // fill(0);
+    fill(120, 255, 255);
     ellipse(this.pos.x, this.pos.y, 20, 20); //20
   }
 }
