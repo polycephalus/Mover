@@ -23,7 +23,7 @@ function draw() {
   c = frameCount%100; //modulo hue pulse
   fill(c, 100, 100);
   // currVec = ball.position;
-  currVec = Object.assign({}, ball.position);
+  // currVec = Object.assign({}, ball.position);
   ball.bounce();
   ball.move();
   // ball.display();
@@ -41,8 +41,8 @@ function draw() {
 function initSaplings() {
   //move to sapling setup func
   let scount = 0;
-  let margin = 2;
-  let distance = 20;
+  const margin = 2;
+  const distance = 20;
   for (i=0; i<20; i++) {
     for (j=0; j<20; j++) {
       positions[scount] = new Sapling((i+margin)*distance, (j+margin)*distance);

@@ -6,9 +6,6 @@ class Ball {
     this.acc = createVector(0, 0);
   }
 
-  // get position(){
-  //   return this.pos;
-  // }
   get position() {
     return this.pos;
   }
