@@ -1,40 +1,66 @@
-let ball;
-let grove = [];
+// import Circle from './Circle.js';
 
-function setup() {
-  createCanvas(460, 460);
-  colorMode(HSB);
+//sketch a constructor func that takes p?
+//sketch namespace/instance mode
+var sketch = function (p){
+  // let ball;
+  p.grove = [];
+  var x = 10;
+  let c;
 
-  strokeWeight(2);
-  stroke(255);
+  let circle;
+  let square;
 
-  ball = new Ball();
-  initSaplings();
-}
+  p.setup = function() {
+    p.createCanvas(460, 460);
+    p.background(0, 255, 255);
+    // p.colorMode(p.HSB);
+    p.rectMode(p.CENTER);
 
-function draw() {
-  background(25);
+    p.strokeWeight(2);
+    p.stroke(255);
 
-  let c = frameCount%100; //modulo hue pulse
-  fill(c, 100, 100);
+    p.print(x);
 
-  ball.bounce();
-  ball.move();
-  // ball.display();
+    square = new Square(p.width/4, p.height/2, p);
+    circle = new Circle(p.width/2, p.height/2, p);
 
-  grove.forEach(function(sapling) {
-    sapling.display(); //take ball
-  });
-}
+    circle.beep(square);
+    console.log(square.spos.y);
 
-function initSaplings() {
-  let count = 0;
-  const margin = 2;
-  const distance = 20;
-  for (i=0; i<20; i++) {
-    for (j=0; j<20; j++) {
-      grove[count] = new Sapling((i+margin)*distance, (j+margin)*distance);
-      count++;
-    }
+    // ball = new Ball();
+    // plantSaplings();
   }
-}
+
+  p.draw = function() {
+    // p.background(0, 255, 255);//25
+
+    p.c = p.frameCount%100; //modulo hue pulse
+    p.fill(c, 100, 100);
+
+    circle.display(square);
+    square.display();
+
+    // ball.bounce();
+    // ball.move();
+    // ball.display();
+
+    // grove.forEach(function(sapling) {
+    //   sapling.display(); //take ball
+    // });
+  }
+
+  // function plantSaplings() {
+  //   let count = 0;
+  //   const margin = 2;
+  //   const distance = 20;
+  //   for (i=0; i<20; i++) {
+  //     for (j=0; j<20; j++) {
+  //       grove[count] = new Sapling((i+margin)*distance, (j+margin)*distance);
+  //       count++;
+  //     }
+  //   }
+  // }
+}; //sketch namespace
+
+let myp5 = new p5(sketch);
