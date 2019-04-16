@@ -1,29 +1,30 @@
-let ball;
-let c;
-let currVec;
+//sketch namespace/instance mode
+//p5 sketch object
+var sketch = function (p){
+  let ball;
+  let grove = [];
 
-function setup() {
-  // createCanvas(460, 460);
-  createCanvas(800, 600);
-  background(0);
-  colorMode(HSB, 100, 100, 100);
+  let hue;
 
-  strokeWeight(2);
-  stroke(255);
-  // noStroke();
+  p.setup = function() {
+    p.createCanvas(800, 600);
+    p.background(0);
+    p.colorMode(p.HSB, 100);
 
-  ball = new Ball();
-}
+    p.strokeWeight(2);
+    p.stroke(100);
 
-function draw() {
-  c = frameCount%100; //modulo hue pulse
-  fill(c, 100, 100);
-  currVec = ball.position;
-  ball.bounce();
-  ball.move();
-  ball.display();
+    ball = new Ball(p);
+  }
 
-  // fill(255);
-  // textSize(52);
-  // text(currVec.x , 100, 100);
-}
+  p.draw = function() {
+    hue = p.frameCount%100; //modulo hue pulse
+    p.fill(hue, 100, 100);
+
+    ball.bounce(p);
+    ball.move(p);
+    ball.display(p);
+  }
+}; //sketch namespace
+
+let myp5 = new p5(sketch);
